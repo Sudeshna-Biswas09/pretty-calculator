@@ -17,8 +17,8 @@ body {
 
 /* --- Container Base & Funky Entrance Animation --- */
 .calculator_container {
-  width: 500px;
-  height: 800px;
+  width: 400px;
+  height: 600px;
   border: 3px solid #f09eca; /* Matches your button color theme */
   border-radius: 20px;
   background-color: rgba(20, 15, 35, 0.85); /* Modern translucent dark design */
@@ -55,7 +55,7 @@ body {
 
 /* --- Buttons Container & Rows --- */
 .calculator_buttons {
-  padding-top: 5%;
+  padding-top: 3%;
 }
 
 .button-row-flex {
@@ -167,7 +167,7 @@ button:active, .equal_button:active {
                
   /*margin: 60px auto 20px auto;*/
   position: absolute;
-  top:5%; /* Acts as the positioning anchor for the bow elements */
+  top:2%; /* Acts as the positioning anchor for the bow elements */
   display: table; /* Shrinks width to wrap exactly around text size for perfect center alignment */
 }
 
