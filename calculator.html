@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>calculator</title>
+  <link rel="stylesheet" href="calculator.css">
+</head>
+<body>
+
+<h1 class="calculator_title">pretty Calculator<span>🎀</span></h1>
+  <div class="calculator_container">
+    <input type="text" class="calculator_display" readonly aria-label="Calculator Display">
+    <div class="calculator_buttons">
+      <div class="button-row-flex">
+       <button type="button" class="number_button" >7</button>
+       <button type="button" class="number_button" >8</button>
+       <button type="button" class="number_button" >9</button>
+       <button type="button" class="btn operator" action="delete">⌫</button>
+      
+      </div>
+
+      <div class="button-row-flex">
+       <button type="button" class="number_button" >4</button>
+       <button type="button" class="number_button" >5</button>
+       <button type="button" class="number_button" >6</button>
+       <button type="button" class="operator_button" >*</button>
+      </div>
+
+      <div class="button-row-flex">
+       <button type="button" class="number_button" >1</button>
+       <button type="button" class="number_button" >2</button>
+       <button type="button" class="number_button" >3</button>
+       <button type="button" class="operator_button" >-</button>
+      </div>
+
+      <div class="button-row-flex">
+       <button type="button" class="number_button" >0</button>
+       <button type="button" class="decimal_button" >.</button>
+       <button type="button" class="operator_button">/</button>
+       <button type="button" class="clear_button" action="clear">C</button>
+      </div>
+      <div class="button-row-flex">
+        <button type="button" class="parenthesis_button" >(</button>
+        <button type="button" class="parenthesis_button" >)</button>
+       
+        <button type="button" class="operator_button" >+</button>
+        <button type="button" class="equal_button" action="calculate">=</button>
+      </div>
+     </div>
+
+
+  </div>
+<script>
+ let displaystring=``;
+  document.querySelector('.calculator_display').value=displaystring;
+  const buttonsContainer = document.querySelector('.calculator_buttons');
+
+  buttonsContainer.addEventListener('click', (event) => {
+    const target = event.target;
+    if(!target.matches('button')) return;
+    const buttonValue=target.textContent;
+    const action=target.getAttribute('action');
+
+    if(action==='calculate'){
+      try{
+        displaystring=displaystring.replaceAll('^','**');
+        displaystring=eval(displaystring).toString();
+      }catch(error){
+        displaystring='Error';
+      }
+  }
+
+  else if(action==='clear'){
+    displaystring=``;
+  }
+  else if(action==='delete'){
+    displaystring=displaystring.slice(0,-1);
+  }
+  else{
+    displaystring+=buttonValue;
+  }
+  document.querySelector('.calculator_display').value = displaystring;
+} );
+  </script>
+
+
+
+
+
+
+</body>
+</html>

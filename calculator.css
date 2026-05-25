@@ -1,0 +1,173 @@
+/* --- Global Body & Background Setup --- */
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+  
+  /* Funky/Crazy background picture with an overlay gradient to keep text readable */
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.8), rgba(88, 28, 135, 0.8)),
+              url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1964&auto=format&fit=crop') no-repeat center center;
+  background-size: cover;
+  overflow: hidden;
+}
+
+/* --- Container Base & Funky Entrance Animation --- */
+.calculator_container {
+  width: 500px;
+  height: 800px;
+  border: 3px solid #f09eca; /* Matches your button color theme */
+  border-radius: 20px;
+  background-color: rgba(20, 15, 35, 0.85); /* Modern translucent dark design */
+  padding: 20px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5),
+              0 0 30px rgba(240, 158, 202, 0.3); /* Neon outer glow */
+  backdrop-filter: blur(10px); /* Frosted glass effect */
+  
+  /* Removing rigid position hacks (left 30%/top 30%) so centering is perfectly stable */
+  position: relative;
+  
+  /* Crazy entrance animation on page load */
+ /* animation: crazyEntrance 1.2s cubic-bezier(0.25, 1.5, 0.5, 1) forwards;*/
+}
+
+/* --- Smooth Screen Display Layer --- */
+.calculator_display {
+  margin: 20px auto;
+  display: block; /* Centers the input element cleanly */
+  width: 90%;
+  height: 12%;
+  text-align: right;
+  padding: 0 20px;
+  font-size: 36px;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  color: #0ef; /* Neon cyan text colors */
+  background-color: #0f172a;
+  border: 2px solid #38bdf8;
+  border-radius: 10px;
+  box-shadow: inset 0 0 15px rgba(0, 238, 255, 0.4);
+  box-sizing: border-box;
+}
+
+/* --- Buttons Container & Rows --- */
+.calculator_buttons {
+  padding-top: 5%;
+}
+
+.button-row-flex {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 15px;
+  width: 100%;
+  padding-top: 4%;
+}
+
+/* --- Main Button Architecture & 3D Styling --- */
+button {
+  flex: 1 1 calc(25% - 15px);
+  height: 75px;
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  background-color: rgb(240, 158, 202);
+  
+  /* Real 3D Mechanical Button Depth effect */
+  box-shadow: 0 8px 0 #b56591, 
+              0 12px 20px rgba(0,0,0,0.4);
+  
+  cursor: pointer;
+  position: relative;
+  transition: all 0.1s ease;
+  transform: translateY(0);
+}
+
+/* Target standalone single equal button at the bottom */
+.equal_button {
+  width: 100%;
+  margin-top: 15px;
+  background-color: #38bdf8;
+  box-shadow: 0 8px 0 #0284c7, 
+              0 12px 20px rgba(0,0,0,0.4);
+}
+
+/* --- Interactive Action State Triggers --- */
+
+/* Hover state: Makes buttons pulsate color and float slightly */
+button:hover {
+  background-color: #f472b6;
+  box-shadow: 0 8px 0 #b56591, 
+              0 0 15px rgba(244, 114, 182, 0.6);
+  transform: translateY(-2px);
+}
+
+/* Active State: Mechanical click compression down onto the baseline */
+button:active, .equal_button:active {
+  transform: translateY(6px); /* Compresses downward */
+  box-shadow: 0 2px 0 #b56591, 
+              0 4px 6px rgba(0,0,0,0.6); /* flattens structural shadow depth */
+}
+
+/* Special operator coloration highlights */
+.operator_button, .clear_button {
+  background-color: #a855f7;
+  box-shadow: 0 8px 0 #7e22ce, 
+              0 12px 20px rgba(0,0,0,0.4);
+}
+.operator_button:hover, .clear_button:hover {
+  background-color: #c084fc;
+  box-shadow: 0 8px 0 #7e22ce, 
+              0 0 15px rgba(192, 132, 252, 0.6);
+}
+
+/* --- Dynamic Animation Engine Keyframes --- */
+
+/* Handles the entrance bouncing spin-drop effect */
+@keyframes crazyEntrance {
+  0% {
+    opacity: 0;
+    transform: scale(0.3) rotate(-45deg) translateY(-500px);
+  }
+  70% {
+    transform: scale(1.05) rotate(5deg) translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg) translateY(0);
+  }
+}
+
+
+
+
+
+
+
+
+
+
+/* Import a clean, ultra-bubbly rounded display font */
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@600&display=swap');
+
+.calculator_title {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 38px;
+  text-align: align;
+  color: #ffffff;
+  
+  /* Bubbly pink text shadow effect for a 3D pop appearance */
+  text-shadow: 0 4px 0 #f472b6,
+               0 8px 0 #b56591,
+               0 10px 20px rgba(0, 0, 0, 0.4);
+               
+  /*margin: 60px auto 20px auto;*/
+  position: absolute;
+  top:5%; /* Acts as the positioning anchor for the bow elements */
+  display: table; /* Shrinks width to wrap exactly around text size for perfect center alignment */
+}
+
